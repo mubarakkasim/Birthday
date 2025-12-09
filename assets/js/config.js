@@ -6,25 +6,24 @@
 
 const BIRTHDAY_CONFIG = {
     // 1. EVENT DETAILS
-    eventName: "Private Royal Birthday", // Used for dynamic titles if implemented
-    eventDate: "December 27",            // Display text
-    unlockDateIso: "2025-12-27T18:00:00", // EXACT DATE/TIME to unlock location (ISO Format)
+    eventName: "Private Royal Birthday",
+    eventDate: "December 27",
+    unlockDateIso: "2025-12-27T18:00:00",
 
     // 2. GUEST & RSVP SETTINGS
-    maxSlots: 50, // Total number of guests allowed
-    rsvpEndpoint: "https://getform.io/f/example-endpoint", // REPLACE with your actual Getform/Formspree URL
+    maxSlots: 10,
+    rsvpEndpoint: "https://getform.io/f/example-endpoint",
 
     // 3. SECURITY & ACCESS
-    // Use the console to generate hashes: await sha256("YOUR_CODE")
-    // By default, this includes hash for "royalty25"
+    // Hashes for valid access codes:
     masterAccessCodeHashes: [
-        "b822f185794da8795eb9d042f4c3298c9f0b3457223e74284cf635c24a66bd2f"
+        "48a9e10ee495266ffa0a28cb517339b748fa69f913b10ea49e1e3b0c9471c3d5", // royalty25
+        "280d44ab1e9f79b5cce2dd4f58f5fe91f0fbacdac9f7447dffc318ceb79f2d02", // welcome
+        "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"   // 1234
     ],
 
     // 4. LOCATION REVEAL
-    // Hashes of the 10 unique guest codes + Master code that can unlock the location page
     guestCodeHashes: [
-        // Paste your 10 generated guest code hashes here
         // Example: sha256("ROYALTY25-1234")
     ],
 

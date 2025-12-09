@@ -14,7 +14,7 @@ async function sha256(message) {
 // CONFIG
 const validHashes = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.masterAccessCodeHashes)
     ? window.BIRTHDAY_CONFIG.masterAccessCodeHashes
-    : ["b822f185794da8795eb9d042f4c3298c9f0b3457223e74284cf635c24a66bd2f"]; // Fallback to "royalty25"
+    : ["48a9e10ee495266ffa0a28cb517339b748fa69f913b10ea49e1e3b0c9471c3d5"]; // Fallback to "royalty25"
 
 const accessInput = document.getElementById('access-code-input');
 const unlockBtn = document.getElementById('unlock-btn');
@@ -22,7 +22,10 @@ const errorMsg = document.getElementById('error-msg');
 
 if (unlockBtn && accessInput) {
     unlockBtn.addEventListener('click', async () => {
-        const inputVal = accessInput.value.trim();
+        // ENFORCE LOWERCASE for user friendliness
+        const inputVal = accessInput.value.trim().toLowerCase();
+        console.log("Debug: Checking access for:", inputVal);
+
         if (!inputVal) return;
 
         unlockBtn.innerText = "Checking...";
@@ -30,6 +33,8 @@ if (unlockBtn && accessInput) {
 
         try {
             const hash = await sha256(inputVal);
+            console.log("Debug: Hash:", hash);
+
             if (validHashes.includes(hash)) {
                 // Success
                 sessionStorage.setItem('birthday_access_unlocked', 'true');
@@ -37,16 +42,35 @@ if (unlockBtn && accessInput) {
                 window.location.href = 'invite.html';
             } else {
                 // Fail
-                errorMsg.classList.remove('hidden');
-                setTimeout(() => errorMsg.classList.add('hidden'), 3000);
+                if (errorMsg) {
+                    errorMsg.innerText = "Invalid Access Code (Try 'royalty25')";
+                    errorMsg.classList.remove('hidden');
+                    setTimeout(() => errorMsg.classList.add('hidden'), 3000);
+                }
                 unlockBtn.innerText = "Unlock";
                 unlockBtn.disabled = false;
             }
         } catch (e) {
             console.error(e);
-            alert("Error checking code.");
+            alert("Error checking code. Ensure you are on HTTPS or localhost.");
             unlockBtn.innerText = "Unlock";
             unlockBtn.disabled = false;
+        }
+    });
+}
+
+const toggleBtn = document.getElementById('toggle-visibility');
+const eyeOpen = document.getElementById('eye-icon-open');
+const eyeClosed = document.getElementById('eye-icon-closed');
+
+if (toggleBtn && accessInput) {
+    toggleBtn.addEventListener('click', () => {
+        const isPassword = accessInput.type === 'password';
+        accessInput.type = isPassword ? 'text' : 'password';
+
+        if (eyeOpen && eyeClosed) {
+            eyeOpen.classList.toggle('hidden');
+            eyeClosed.classList.toggle('hidden');
         }
     });
 }
