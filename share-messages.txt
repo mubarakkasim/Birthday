@@ -1,0 +1,61 @@
+=== 6 WhatsApp Messages (Short & Personal) ===
+
+1. "Hey! I'm celebrating my birthday on Dec 27. It's going to be a private, royal-themed night. I'd love to see you there. Access code and details here: {{WEBSITE_URL}}"
+
+2. "Save the date: Dec 27. I'm hosting an exclusive party and you're on the list. Use code {{ACCESS_CODE}} to unlock the invite: {{WEBSITE_URL}}"
+
+3. "Dec 27. 18:00. Secret Location. Join me for a night of royalty. Register here to get your pass: {{WEBSITE_URL}}"
+
+4. "It's official! My Royal Birthday is happening on the 27th. Unlock the location with code {{ACCESS_CODE}}: {{WEBSITE_URL}} — Don't be late!"
+
+5. "Yo! Birthday details are live. It's strictly guest-list only, so grab your spot quickly. The link unlocks with: {{ACCESS_CODE}} -> {{WEBSITE_URL}}"
+
+6. "A night to remember. Dec 27. I want you there. Check the rules and get your QR pass here: {{WEBSITE_URL}}"
+
+
+=== 4 Facebook/Instagram Captions ===
+
+1. "Royalty is not just a title; it's a vibe. 👑 Join me on Dec 27 for an exclusive evening. Location reveals to registered guests only. Link in bio. #RoyalBirthday #Dec27 #PrivateEvent"
+
+2. "Strictly Private. Strictly Royal. ✨ Celebrating another year on Dec 27. The guest list is limited—access the invite with code {{ACCESS_CODE}} at the link below. See you there."
+
+3. "Counting down to Dec 27. ⏳ A secret location, a royal theme, and the best company. Unlock the details now: {{WEBSITE_URL}} #BirthdayVibes #Exclusive"
+
+4. "The location is locked. The date is set. Dec 27 @ 18:00. Are you on the list? 🔒🗝️ secure your pass at {{WEBSITE_URL}}"
+
+
+=== 2 Printable A5 Card Text Variants ===
+
+[FORMAL]
+REQUEST THE PLEASURE OF YOUR COMPANY
+AT A PRIVATE ROYAL BIRTHDAY CELEBRATION
+DECEMBER 27TH | 18:00 HRS
+LOCATION: CLASSIFIED (REVEALS ONLINE)
+RSVP ESSENTIAL: {{WEBSITE_URL}}
+ACCESS CODE: {{ACCESS_CODE}}
+
+[CASUAL]
+PRIVATE ROYAL BIRTHDAY
+DEC 27 — 6 PM TILL LATE
+SECRET LOCATION
+UNLOCK YOUR INVITE: {{WEBSITE_URL}}
+ENTRY CODE: {{ACCESS_CODE}}
+(STRICTLY GUEST LIST ONLY)
+
+
+=== 10 Unique One-Line QR Scan Instructions ===
+
+1. "Scan to reveal the secret location."
+2. "Your key to the venue—scan now."
+3. "Unlock the coordinates. Scan here."
+4. "Access granted? Scan to verify location."
+5. "Where is the party? Scan to find out."
+6. "Dec 27. 18:00. Scan for directions."
+7. "The secret awaits. Scan to unlock."
+8. "Authorized guests: Scan for entry map."
+9. "Location classified. Scan to declassify."
+10. "Your Royal Pass is ready. Scan to view."
+
+
+=== Privacy Line ===
+"This is a private invitation. Location reveals on Dec 27 at 18:00 only to registered guests with code."

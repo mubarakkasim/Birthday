@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#D4AF37',
+                            500: '#C5A028',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <!-- CONFIG LOADED HERE -->
+    <script src="assets/js/config.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col items-center min-h-screen p-6 bg-gray-950">
+
+    <div class="max-w-md w-full space-y-6 pt-10 animate-fade-in relative z-10">
+        <div class="text-center">
+            <h1 class="text-3xl font-serif text-gold-400 mb-2">You are Invited</h1>
+            <p class="text-gray-400 text-sm">Strictly by guest list only.</p>
+        </div>
+
+        <div class="bg-gray-900 border border-gold-400/20 rounded-xl p-6 space-y-4 shadow-lg shadow-gold-400/5">
+            <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                <span class="text-gray-400 uppercase text-xs tracking-wider">Date</span>
+                <span class="font-serif text-xl" id="display-date">December 27</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                <span class="text-gray-400 uppercase text-xs tracking-wider">Time</span>
+                <span class="font-serif text-xl">18:00 - Late</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                <span class="text-gray-400 uppercase text-xs tracking-wider">Location</span>
+                <span class="font-serif text-xl text-gray-500 blur-sm select-none">SECRET</span>
+            </div>
+
+            <div class="pt-2 text-center">
+                <p class="text-red-400 font-semibold mb-1" id="slots-display">Loading availability...</p>
+                <p class="text-xs text-gray-500">First come, first served.</p>
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            <a href="rules.html"
+                class="block w-full py-4 text-center bg-gold-400 hover:bg-gold-500 text-black font-bold uppercase tracking-wider rounded-lg transition-all">
+                Proceed to Rules
+            </a>
+            <a href="gallery.html"
+                class="block w-full py-3 text-center border border-gray-700 hover:border-gold-400 text-gray-300 rounded-lg text-sm transition-all">
+                View Gallery
+            </a>
+        </div>
+    </div>
+
+    <script src="assets/js/access-check.js"></script>
+    <script>
+        enforceAccess();
+
+        // Load dynamic data from config if available
+        if (window.BIRTHDAY_CONFIG) {
+            // Update slots
+            const MAX_SLOTS = window.BIRTHDAY_CONFIG.maxSlots || 50;
+            const taken = 12; // Simulation
+            document.getElementById('slots-display').innerText = `${MAX_SLOTS - taken} Spots Remaining`;
+
+            // Update Date Display
+            if (window.BIRTHDAY_CONFIG.eventDate) {
+                document.getElementById('display-date').innerText = window.BIRTHDAY_CONFIG.eventDate;
+            }
+        }
+    </script>
+</body>
+
+</html>

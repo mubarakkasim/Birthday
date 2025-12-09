@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Male Contributions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- ROBOTS: NOINDEX -->
+    <meta name="robots" content="noindex, nofollow">
+</head>
+
+<body class="bg-gray-100 p-8">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded shadow">
+        <h1 class="text-2xl font-bold mb-4 text-red-600">SECRET ADMIN PAGE - DO NOT SHARE PUBLICLY</h1>
+        <p class="mb-4 text-gray-700">Use this page to copy payment links for male guests contributing to the event.
+            Send these links privately via WhatsApp/DM.</p>
+
+        <div class="space-y-4">
+            <div class="p-4 border rounded bg-blue-50">
+                <h3 class="font-bold">Option 1: Bank Transfer</h3>
+                <code class="block bg-white p-2 mt-1 rounded border text-sm">
+                    Bank: {{BANK_NAME}}<br>
+                    Account: {{ACCOUNT_NUMBER}}<br>
+                    Name: {{ACCOUNT_NAME}}
+                </code>
+                <button class="mt-2 text-blue-600 text-sm hover:underline">Copy Text</button>
+            </div>
+
+            <div class="p-4 border rounded bg-blue-50">
+                <h3 class="font-bold">Option 2: Payment Link (Paystack/Flutterwave)</h3>
+                <code class="block bg-white p-2 mt-1 rounded border text-sm">
+                    {{PAYMENT_LINK_URL}}
+                </code>
+            </div>
+
+            <div class="p-4 border rounded bg-orange-50">
+                <h3 class="font-bold">Message Template (Male Guests)</h3>
+                <textarea class="w-full h-32 p-2 mt-1 border rounded text-sm" readonly>
+Hey bro, really looking forward to seeing you at the birthday.
+
+As discussed, we're pooling a small contribution for the drinks/venue. Since we're keeping the ladies compliant with the "guest" status, the guys are handling the heavy lifting.
+
+Please sort your contribution here: 
+{{PAYMENT_LINK_URL}} or 
+{{BANK_DETAILS}}
+
+Once done, register on the site to get your QR code.
+Link: {{WEBSITE_URL}}
+Code: {{ACCESS_CODE}}
+                </textarea>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
