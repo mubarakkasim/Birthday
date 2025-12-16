@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print Pass - Mubarak Birthday</title>
+    <title>Print Pass - Mubarak's Royal Birthday</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap"
@@ -122,7 +122,8 @@
 
         // Gen QR
         if (window.generateQR) {
-            window.generateQR(document.getElementById('qr-code'), code);
+            const qrPayload = `https://mubarak27.vercel.app/location.html?code=${code}`;
+            window.generateQR(document.getElementById('qr-code'), qrPayload);
         }
     </script>
 </body>

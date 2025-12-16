@@ -6,8 +6,9 @@
 
 const BIRTHDAY_CONFIG = {
     // 1. EVENT DETAILS
-    eventName: "Private Royal Birthday",
-    eventDate: "December 27",
+    eventName: "Mubarak's Royal Birthday",
+    celebrantName: "Mubarak Kasim Maishanu",
+    eventDate: "Saturday, 27 December 2025",
     unlockDateIso: "2025-12-27T18:00:00",
 
     // 2. GUEST & RSVP SETTINGS
@@ -28,14 +29,14 @@ const BIRTHDAY_CONFIG = {
     ],
 
     // 5. SECRETS (Displayed only when unlocked)
-    hotelName: "The Grand Palace Hotel",
-    hotelAddress: "123 Royal Avenue, District 1",
+    hotelName: "Private Venue",
+    hotelAddress: "Zaria, Kaduna State, Nigeria",
 
     // 6. BANKING (For Admin/Manual Use)
     bankDetails: {
         bankName: "Royal Bank",
         accountNum: "1234567890",
-        accountName: "Birthday Host"
+        accountName: "Mubarak Kasim Maishanu"
     }
 };
 

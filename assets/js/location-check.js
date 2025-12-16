@@ -10,8 +10,8 @@ const UNLOCK_DATE = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.unlockDate
     : new Date("2025-12-27T18:00:00").getTime();
 
 const VALID_GUEST_CODES_HASHES = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.guestCodeHashes)
-    ? window.BIRTHDAY_CONFIG.guestCodeHashes
-    : [];
+const urlParams = new URLSearchParams(window.location.search);
+const urlCode = urlParams.get('code');
 
 const locationLocked = document.getElementById('location-locked');
 const locationUnlocked = document.getElementById('location-unlocked');
@@ -29,23 +29,45 @@ async function checkReveal() {
     }
     if (timerMsg) timerMsg.innerText = "Event is live. Enter your unique code.";
     if (revealBtn) revealBtn.disabled = false;
+
+    // Auto-check if URL code is present
+    if (urlCode && codeInput) {
+        codeInput.value = urlCode;
+        // Small delay to ensure UI updates
+        setTimeout(() => {
+            if (revealBtn) revealBtn.click();
+        }, 500);
+    }
 }
 
 if (revealBtn) {
     revealBtn.addEventListener('click', async () => {
-        const inputVal = codeInput.value.trim().toUpperCase();
+        const inputVal = codeInput.value.trim(); // Case sensitive or not? Usually hashes are lower/case sensitive. Let's try flexible.
         if (!inputVal) return;
 
+        // Try both raw and uppercase for user convenience, but usually config hashes need to match exactly or normalized.
+        // We'll normalize input to what the hash expects. Assuming the config hashes are for specific strings.
+        // For security, usually precise. But for this event, we'll try the input as is.
         const hash = await sha256(inputVal);
 
+        // Also try lowercase hash since config hashes might be of lowercased strings
+        const lowerHash = await sha256(inputVal.toLowerCase());
+
         let isValid = false;
-        if (VALID_GUEST_CODES_HASHES.includes(hash)) {
+
+        // Check Guest Codes
+        if (VALID_GUEST_CODES_HASHES.includes(hash) || VALID_GUEST_CODES_HASHES.includes(lowerHash)) {
             isValid = true;
         }
 
-        // Also check if master code used for access is valid (optional fallback)
-        const masterMethod = sessionStorage.getItem('birthday_access_code');
-        // if (inputVal === masterMethod) isValid = true;
+        // Check Master Codes (Fallback)
+        const MASTER_HASHES = (window.BIRTHDAY_CONFIG && window.BIRTHDAY_CONFIG.masterAccessCodeHashes)
+            ? window.BIRTHDAY_CONFIG.masterAccessCodeHashes
+            : [];
+
+        if (MASTER_HASHES.includes(hash) || MASTER_HASHES.includes(lowerHash)) {
+            isValid = true;
+        }
 
         if (isValid) {
             // Apply config details to DOM before showing
