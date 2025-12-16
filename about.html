@@ -58,6 +58,8 @@
         .gold-grad-text {
             background: linear-gradient(to right, #D4AF37, #F3E5AB, #D4AF37);
             -webkit-background-clip: text;
+            /* standard property */
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
             animation: shine 5s linear infinite;
@@ -80,8 +82,12 @@
             transform: translateY(0);
         }
 
-        .quote-border {
-            border-left: 2px solid #D4AF37;
+        .image-card {
+            transition: transform 0.5s ease;
+        }
+
+        .image-card:hover {
+            transform: scale(1.02);
         }
     </style>
 </head>
@@ -100,16 +106,21 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center justify-center p-6 pt-20 overflow-hidden">
-        <!-- Background decorative elements -->
-        <div
-            class="absolute top-0 right-0 w-96 h-96 bg-gold-400/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2">
-        </div>
-        <div
-            class="absolute bottom-0 left-0 w-64 h-64 bg-blue-900/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2">
+    <header class="relative min-h-[90vh] flex items-center justify-center p-6 pt-20 overflow-hidden">
+
+        <!-- Hero Image Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent z-10"></div>
+            <!-- Using mubarak4.jpg as a high-quality portrait/hero image -->
+            <img src="assets/images/mubarak4.jpg"
+                class="w-full h-full object-cover object-top opacity-60 mix-blend-overlay" alt="Mubarak Hero">
         </div>
 
-        <div class="relative z-10 max-w-3xl mx-auto text-center space-y-8">
+        <div
+            class="absolute top-0 right-0 w-96 h-96 bg-gold-400/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 z-0">
+        </div>
+
+        <div class="relative z-10 max-w-3xl mx-auto text-center space-y-8 mt-32">
             <p class="text-gold-400 uppercase tracking-[0.3em] text-sm animate-fade-in">The Celebrant</p>
             <h1 class="text-5xl md:text-7xl font-serif font-bold text-white leading-tight animate-fade-in"
                 style="animation-delay: 0.2s;">
@@ -117,21 +128,9 @@
             </h1>
             <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-sm font-light text-gray-400 animate-fade-in"
                 style="animation-delay: 0.4s;">
-                <span class="flex items-center gap-2"><svg class="w-4 h-4 text-gold-400" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                        </path>
-                    </svg> Saturday, 27 Dec 2025</span>
+                <span class="flex items-center gap-2">Saturday, 27 Dec 2025</span>
                 <span class="hidden md:inline text-gold-400">•</span>
-                <span class="flex items-center gap-2"><svg class="w-4 h-4 text-gold-400" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                        </path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg> Zaria, Kaduna State</span>
+                <span class="flex items-center gap-2">Zaria, Kaduna State</span>
             </div>
 
             <div class="pt-8 animate-slide-up" style="animation-delay: 0.6s;">
@@ -141,76 +140,100 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-3xl mx-auto px-6 space-y-24 pb-32">
+    <main class="max-w-4xl mx-auto px-6 space-y-32 pb-32">
 
         <!-- Manifesto -->
-        <section class="animate-on-scroll">
-            <blockquote class="text-2xl md:text-3xl font-serif text-center leading-relaxed text-gray-200">
+        <section class="animate-on-scroll text-center space-y-8">
+            <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-gold-400/30 p-1">
+                <img src="assets/images/Mubarak.jpg" alt="Profile" class="w-full h-full object-cover rounded-full">
+            </div>
+            <blockquote class="text-2xl md:text-3xl font-serif leading-relaxed text-gray-200">
                 "I am a <span class="text-gold-400">builder</span> by nature — of systems, ideas, and people."
             </blockquote>
-            <p class="text-center mt-6 text-gray-500 max-w-xl mx-auto">
+            <p class="text-gray-500 max-w-xl mx-auto">
                 My journey has been shaped by responsibility, curiosity, and an unshakeable belief that quiet
                 consistency outlives noise.
             </p>
         </section>
 
         <!-- Professional -->
-        <section class="grid md:grid-cols-[1fr_2fr] gap-8 items-start animate-on-scroll">
-            <div class="text-gold-400 font-serif text-xl border-l-2 border-gold-400 pl-4 py-1">
-                The Professional
+        <section class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
+            <div class="order-2 md:order-1 space-y-6">
+                <div class="text-gold-400 font-serif text-xl border-l-2 border-gold-400 pl-4 py-1">
+                    The Professional
+                </div>
+                <div class="space-y-4 text-lg leading-relaxed text-gray-300">
+                    <p>
+                        I work at the intersection of <span class="text-white">technology, data, and education</span>. I
+                        specialize in web application development and data analysis, with hands-on experience in
+                        building practical solutions that solve real problems.
+                    </p>
+                    <p>
+                        Beyond code, I am a teacher, a mentor, and a documenter — someone who believes that knowledge
+                        only matters when it can be explained, shared, and applied.
+                    </p>
+                </div>
             </div>
-            <div class="space-y-4 text-lg leading-relaxed text-gray-300">
-                <p>
-                    I work at the intersection of <span class="text-white">technology, data, and education</span>. I
-                    specialize in web application development and data analysis, with hands-on experience in building
-                    practical solutions that solve real problems.
-                </p>
-                <p>
-                    Beyond code, I am a teacher, a mentor, and a documenter — someone who believes that knowledge only
-                    matters when it can be explained, shared, and applied.
-                </p>
+            <div
+                class="order-1 md:order-2 image-card rounded-xl overflow-hidden shadow-2xl shadow-gold-400/5 aspect-[4/5]">
+                <img src="assets/images/award.jpg" alt="Mubarak Professional" class="w-full h-full object-cover">
             </div>
         </section>
 
         <!-- Background -->
-        <section class="grid md:grid-cols-[1fr_2fr] gap-8 items-start animate-on-scroll">
-            <div class="text-gold-400 font-serif text-xl border-l-2 border-gold-400 pl-4 py-1">
-                The Foundation
+        <section class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
+            <div class="image-card rounded-xl overflow-hidden shadow-2xl shadow-gold-400/5 aspect-square bg-gray-900">
+                <img src="assets/images/chapter1.jpg" alt="Mubarak Roots" class="w-full h-full object-cover opacity-80">
             </div>
-            <div class="space-y-4 text-lg leading-relaxed text-gray-300">
-                <p>
-                    I come from humble beginnings, and that background has trained me to value <span
-                        class="text-white">discipline, patience, and self-reliance</span>.
-                </p>
-                <p>
-                    Every milestone I reach is intentional. Nothing rushed. Nothing accidental.
-                </p>
+            <div class="space-y-6">
+                <div class="text-gold-400 font-serif text-xl border-l-2 border-gold-400 pl-4 py-1">
+                    The Foundation
+                </div>
+                <div class="space-y-4 text-lg leading-relaxed text-gray-300">
+                    <p>
+                        I come from humble beginnings, and that background has trained me to value <span
+                            class="text-white">discipline, patience, and self-reliance</span>.
+                    </p>
+                    <p>
+                        Every milestone I reach is intentional. Nothing rushed. Nothing accidental.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <!-- Personal -->
-        <section class="grid md:grid-cols-[1fr_2fr] gap-8 items-start animate-on-scroll">
-            <div class="text-gold-400 font-serif text-xl border-l-2 border-gold-400 pl-4 py-1">
-                The Man
-            </div>
-            <div class="space-y-4 text-lg leading-relaxed text-gray-300">
-                <p>
+        <!-- The Man / Gallery -->
+        <section class="space-y-12 animate-on-scroll">
+            <div class="text-center space-y-4">
+                <div class="text-gold-400 font-serif text-2xl">The Man Behind The Work</div>
+                <p class="max-w-2xl mx-auto text-gray-400">
                     Outside work, I value meaningful conversations over small talk, <span class="text-white">clarity
                         over chaos</span>, and purpose over excess.
                 </p>
-                <p>
-                    I enjoy reading, writing, reflecting, and building things that will still make sense years from now.
-                    Faith, character, and personal growth remain central pillars of my life.
-                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="image-card rounded-lg overflow-hidden h-64"><img src="assets/images/mubarak3.jpg"
+                        class="w-full h-full object-cover" alt="Moment 1"></div>
+                <div class="image-card rounded-lg overflow-hidden h-64"><img src="assets/images/mubarak5.jpeg"
+                        class="w-full h-full object-cover" alt="Moment 2"></div>
+                <div class="image-card rounded-lg overflow-hidden h-64"><img src="assets/images/mubarak6.jpeg"
+                        class="w-full h-full object-cover" alt="Moment 3"></div>
+                <div class="image-card rounded-lg overflow-hidden h-64"><img src="assets/images/mubarak9.jpeg"
+                        class="w-full h-full object-cover" alt="Moment 4"></div>
             </div>
         </section>
 
+
         <!-- Closing -->
         <section
-            class="relative p-8 md:p-12 bg-white/5 rounded-2xl border border-white/10 text-center animate-on-scroll">
-            <div class="absolute inset-0 bg-gold-400/5 blur-xl"></div>
+            class="relative p-8 md:p-12 bg-white/5 rounded-2xl border border-white/10 text-center animate-on-scroll overflow-hidden">
+            <!-- Background Blend -->
+            <div class="absolute inset-0 z-0">
+                <img src="assets/images/about.jpg" class="w-full h-full object-cover opacity-20 blur-sm">
+            </div>
+
             <div class="relative z-10 space-y-6">
-                <p class="font-serif italic text-xl text-gray-300">
+                <p class="font-serif italic text-xl text-gray-100">
                     "This birthday is not just a celebration of age — it is a pause to acknowledge growth, lessons
                     learned, and the people who have stood around me with sincerity."
                 </p>
@@ -221,9 +244,13 @@
 
                 <div class="pt-8">
                     <a href="index.html"
-                        class="inline-block px-8 py-3 bg-gold-400 hover:bg-gold-500 text-black font-semibold rounded transition-colors duration-300">
+                        class="inline-block px-8 py-3 bg-gold-400 hover:bg-gold-500 text-black font-semibold rounded transition-colors duration-300 shadow-lg shadow-gold-400/20">
                         Proceed to Event
                     </a>
+                    <div class="mt-4">
+                        <a href="admin-paylinks.html"
+                            class="text-xs text-gray-500 hover:text-white transition-colors">Admin Access</a>
+                    </div>
                 </div>
             </div>
         </section>
